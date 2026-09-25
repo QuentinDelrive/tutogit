@@ -1,0 +1,21 @@
+name : Mon Build C ++
+
+on:
+  push:
+    branches: [ main ]
+
+jobs :
+  build:
+  runs-on: ubuntu - latest
+
+  steps:
+    - name: git clone http://github.com:QuentinDelrive/tutogit.git
+      uses: actions/checkout@v4
+
+    - name : Configurer le projet
+      run : |
+        cd tutogit && cmake -S . -B ./build
+
+    - name : Compiler
+      run : |
+        cmake --build ./build
